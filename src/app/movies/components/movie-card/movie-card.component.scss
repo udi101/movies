@@ -1,0 +1,32 @@
+:host{
+  height:470px;
+}
+.card {
+  display: grid;
+  grid-template-rows: auto auto auto auto 1fr auto;
+  align-items: start;
+  height: 100%;
+  width: 260px;
+
+  &__image {
+    width: 260px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .read-more {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+    align-self: end;
+    height: 42px;
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
+}

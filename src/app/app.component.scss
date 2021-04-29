@@ -1,0 +1,21 @@
+:host {
+  display: grid;
+  grid-template-rows: 122px auto 300px;
+}
+
+.logo {
+  background-image: url(../assets/Logo2.png);
+  height: 82px;
+  width: 260px;
+}
+
+
+.header {
+  display: grid;
+  align-items: center;
+  margin-left: 152px;
+}
+
+.footer {
+  background-color: var(--nx-black);
+}
