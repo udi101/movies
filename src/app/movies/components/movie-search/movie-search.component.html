@@ -1,3 +1,8 @@
-<div>
-  <input type="text" (input)="filterChanged($event.target.value)">
+<div class="search">
+  <form [formGroup]="frmFilter">
+    <div class="icon">
+      <mat-icon>search</mat-icon>
+    </div>
+    <input id="txtFilter" type="text" formControlName="filter">
+  </form>
 </div>

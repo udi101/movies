@@ -1,6 +1,13 @@
-:host{
-  height:470px;
+:host {
+  height: 500px;
 }
+
+.movie {
+  &__title, &__year, &__rating {
+    font-size: 16px;
+  }
+}
+
 .card {
   display: grid;
   grid-template-rows: auto auto auto auto 1fr auto;
@@ -13,8 +20,14 @@
 
     img {
       width: 100%;
+
+      &:hover {
+        transform: scale(1.02);
+        transition: all 200ms;
+      }
     }
   }
+
 
   .read-more {
     display: grid;
@@ -29,4 +42,15 @@
     box-sizing: border-box;
     padding: 0 20px;
   }
+}
+
+
+@keyframes arrowMove {
+  from {
+    transform: translateX(-100px), rotateX(10deg);
+  }
+  to {
+    transform: translateX(100px);
+  }
+
 }

@@ -14,6 +14,13 @@ export class MovieEffects {
       map(movies => MovieActions.loadAllMoviesSuccess({movies}))
     ));
 
+  loadMovie$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(MovieActions.loadMovie),
+      switchMap(action => this.movieService.getMovie(action.movieId)),
+      map(movie => MovieActions.loadMovieSuccess({movie}))
+      ));
+
 
   constructor(private actions$: Actions, private movieService: MovieService) {
   }

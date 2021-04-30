@@ -32,18 +32,6 @@ fdescribe('MovieService', () => {
     req.flush(mockMovies);
   });
 
-  fit('Should retrieve specific course', () => {
-    const courseId = '234365';
-    movieService.getMovie(courseId).subscribe(movie => {
-      expect(movie).toBeTruthy('No movies have been retrieved');
-      expect(movie.title).toEqual('Against All Odds');
-    });
-
-    const req = httpTestingController?.expectOne(`http://localhost:3000/${courseId}`);
-    expect(req.request.method).toBe('GET', 'Incorrect method used to bring the movies');
-    req.flush(mockMovies[2]);
-  });
-
   afterEach(() => {
     httpTestingController.verify();
   });

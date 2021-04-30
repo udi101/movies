@@ -1,3 +1,29 @@
-:host{
+:host {
   display: block;
+}
+.search{
+  display: grid;
+  justify-content: right;
+  padding-right: 148px;
+}
+form {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  width: 200px;
+  height: 36px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+
+  .icon {
+    display: grid;
+    place-content: center;
+  }
+
+  input {
+    background-color: transparent;
+    border: 0;
+    grid-column-start: 2;
+    height: 100%;
+    outline: 0;
+  }
 }

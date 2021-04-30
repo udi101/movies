@@ -1,15 +1,15 @@
-<div class="card">
+<div class="card pointer" (click)="onMovieClicked.emit(movie)">
   <div class="card__image">
     <img [src]="movie?.largeimage" alt="">
   </div>
-  <div class="card__title no-break">{{movie?.title}}</div>
+  <div class="movie__title no-break">{{movie?.title}}</div>
   <div class="movie__year">({{movie?.released}})</div>
-  <div class="card__rating">
+  <div class="movie__rating">
     <img src="assets/star.svg" alt="">
     {{movie?.rating}}</div>
   <div class="read-more">
     <div class="read_more__text">Read More</div>
-    <div class="arrow">---></div>
+    <div class="arrow"><mat-icon>trending_flat</mat-icon></div>
   </div>
 </div>
 

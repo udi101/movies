@@ -1,7 +1,13 @@
+@import "src/styles/config/breakpoints";
+
 .movies-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   justify-items: center;
-  row-gap: 100px;
+  row-gap: 60px;
   padding: 0 140px;
+
+  @media #{$mobile} {
+    padding: 0;
+  }
 }

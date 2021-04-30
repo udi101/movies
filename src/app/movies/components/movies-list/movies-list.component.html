@@ -1,5 +1,6 @@
 <div class="movies-list">
-    <movie-card *ngFor="let movie of filteredMovieList" [movie]="movie"></movie-card>
+  <movie-card *ngFor="let movie of filteredMovieList" [movie]="movie"
+              (onMovieClicked)="movieClicked($event)"></movie-card>
 </div>
 
 

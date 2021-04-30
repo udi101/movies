@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {debounce} from 'rxjs/operators';
+import {FormGroup, FormBuilder} from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'movie-search',
@@ -10,16 +11,19 @@ import {debounce} from 'rxjs/operators';
 export class MovieSearchComponent implements OnInit {
 
   @Output() onFilterChanged = new EventEmitter<string>();
+  frmFilter: FormGroup = {} as FormGroup;
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
-  }
+    this.frmFilter = this.formBuilder.group({
+      filter: ''
+    });
 
-
-  filterChanged(filter: string): void {
-    console.log(filter);
-    this.onFilterChanged.emit(filter);
+    this.frmFilter.get('filter')?.valueChanges
+      .pipe(debounceTime(500))
+      .subscribe(filter => this.onFilterChanged.emit(filter));
   }
 }
+

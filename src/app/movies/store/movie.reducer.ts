@@ -21,5 +21,14 @@ export const movieReducer = createReducer(
   initialState,
   on(MovieActions.loadAllMoviesSuccess,
     (state, action) => ({...state, allMovies: [...action.movies], allMoviesLoaded: true})
+  ),
+  on(MovieActions.updateFilterExpression,
+    (state, action) => ({...state, filterExpression: action.filterExpression})
+  ),
+  on(MovieActions.loadMovieSuccess,
+    (state, action) => ({...state, currentMovie: action.movie})
+  ),
+  on(MovieActions.clearCurrentMovie,
+    (state, action) => ({...state, currentMovie: {} as Movie})
   )
 );

@@ -1,8 +1,9 @@
 <div class="title">
-  EXPLORE YOUR NEXT MOVIES AND TV SHOWS
+  <div class="title__text">
+    EXPLORE YOUR NEXT MOVIES AND TV SHOWS
+  </div>
 </div>
-<movie-search></movie-search>
-<div>
-</div>
+<movie-search (onFilterChanged)="filterChanged($event)"></movie-search>
 
-<movies-list [movies]="movies$ | async"></movies-list>
+<movies-list [movies]="(movies$ | async)" [filter]="filterExpression$ | async"
+             (onMovieClicked)="movieClicked($event)"></movies-list>

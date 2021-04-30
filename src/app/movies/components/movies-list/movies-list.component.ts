@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Movie} from '../../interfaces/movie.interface';
 
 
@@ -9,24 +9,33 @@ import {Movie} from '../../interfaces/movie.interface';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MoviesListComponent implements OnInit {
-  @Input('movies') movies: Movie[] = [];
+  movieList: Movie[] = [];
 
-  @Input('filter') set filter(value: string) {
-    this.filterExpression = value;
-
+  @Input('movies') set movies(value: Movie[] | null) {
+    this.movieList = !value ? [] : value;
   }
 
+  @Input('filter') set filter(value: string | null) {
+    this.filterExpression = !value ? '' : value;
+    this.filterMovies(this.filterExpression);
+  }
+
+  @Output() onMovieClicked = new EventEmitter<Movie>();
+
   filterExpression = '';
-  filteredMovieList: Movie[] = [];
+  filteredMovieList = new Array<Movie>();
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.filterMovies('m');
   }
 
   filterMovies(filter: string): void {
-    this.filteredMovieList = this.movies.filter(movie => movie.title.toLowerCase().includes(filter.toLowerCase()));
+    this.filteredMovieList = this.movieList.filter(movie => movie.title.toLowerCase().includes(filter.toLowerCase()));
+  }
+
+  movieClicked(movie: Movie): void {
+    this.onMovieClicked.emit(movie);
   }
 }

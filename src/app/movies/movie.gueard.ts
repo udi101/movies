@@ -18,7 +18,6 @@ export class MovieResolver implements Resolve<boolean> {
     return this.store.pipe(
       select(MovieSelectors.allMoviesLoaded),
       tap((moviesLoaded) => {
-        console.log(moviesLoaded);
         if (!moviesLoaded) {
         this.store.dispatch(MovieActions.loadAllMovies());
         }

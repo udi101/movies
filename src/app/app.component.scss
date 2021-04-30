@@ -1,3 +1,5 @@
+@import "../styles/config/breakpoints";
+
 :host {
   display: grid;
   grid-template-rows: 122px auto 300px;
@@ -5,8 +7,13 @@
 
 .logo {
   background-image: url(../assets/Logo2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
   height: 82px;
   width: 260px;
+  @media #{$mobile} {
+    height: 60px;
+  }
 }
 
 
@@ -14,6 +21,9 @@
   display: grid;
   align-items: center;
   margin-left: 152px;
+  @media #{$mobile} {
+    margin-left: 20px;
+  }
 }
 
 .footer {

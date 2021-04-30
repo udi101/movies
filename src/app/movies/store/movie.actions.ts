@@ -24,3 +24,7 @@ export const updateFilterExpression = createAction(
   '[Filter Input] Update Filter Expression',
   props<{ filterExpression: string }>()
 );
+
+export const clearCurrentMovie = createAction(
+  '[MoviesComponent Dialog Closed] Clear Current Movie'
+)
